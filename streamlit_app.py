@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import base64
 import joblib
+import os
 from xgboost import XGBClassifier
 from sklearn.preprocessing import LabelEncoder
 from PIL import Image
@@ -60,12 +61,22 @@ st.markdown("""
 st.markdown("---")
 
 # -------------------- Load Pretrained Model & Label Encoder -------------------- #
+model_path = "xgb_model.pkl"
+encoder_path = "label_encoder.pkl"
+
+st.write("Model file exists:", os.path.exists(model_path))
+st.write("Encoder file exists:", os.path.exists(encoder_path))
+
+st.write("Model file readable:", os.access(model_path, os.R_OK))
+st.write("Encoder file readable:", os.access(encoder_path, os.R_OK))
+
 try:
-    model = joblib.load("xgb_model.pkl")
-    label_encoder = joblib.load("label_encoder.pkl")
+    model = joblib.load(model_path)
+    label_encoder = joblib.load(encoder_path)
 except Exception as e:
     st.error(f"❌ Failed to load model or encoder: {e}")
     st.stop()
+
 # -------------------- Attack Label Mapping -------------------- #
 attack_labels = {
     0: ('Backdoor_Malware', 'Malware that allows remote control of infected systems'),
