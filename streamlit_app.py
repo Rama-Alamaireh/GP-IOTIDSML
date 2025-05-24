@@ -311,7 +311,6 @@ st.markdown(f"""
 # -------------------- Our Team -------------------- #
 st.markdown("---")
 st.subheader("Our Team")
-
 def circular_image(image_url, name, linkedin_url, email):
     st.markdown(f"""
     <div style="text-align: center;">
@@ -319,16 +318,22 @@ def circular_image(image_url, name, linkedin_url, email):
              style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;" />
         <div style="margin-top: 10px; font-weight: bold; color: white;">{name}</div>
         <div style="margin-top: 8px;">
-            <a href="{linkedin_url}" target="_blank" style="margin-right: 10px;">
-                <img src="https://i.imgur.com/YoHLlN8.png" 
-                     width="24" height="24" style="vertical-align: middle;" />
-            </a><a href="mailto:{email}">
-                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" 
-                     width="24" height="24" style="vertical-align: middle;" />
-            </a>
+            <span style="display: inline-block; margin-right: 10px;">
+                <a href="{linkedin_url}" target="_blank">
+                    <img src="https://i.imgur.com/YoHLlN8.png" 
+                         width="24" height="24" style="vertical-align: middle;" />
+                </a>
+            </span>
+            <span style="display: inline-block;">
+                <a href="mailto:{email}">
+                    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" 
+                         width="24" height="24" style="vertical-align: middle;" />
+                </a>
+            </span>
         </div>
     </div>
     """, unsafe_allow_html=True)
+)
 
 
 # --- Team members with image, LinkedIn, and email
