@@ -334,8 +334,8 @@ def circular_image(image_url, name, linkedin_url, email):
 # --- Team members with image, LinkedIn, and email
 teammates = [
     ("https://i.imgur.com/sD4pIHh.jpeg", "Rama Alamaireh", "https://www.linkedin.com/in/ramaalamaireh", "ramaalamairh0909@gmail.com"),
-    ("Sewar Ismail", "https://i.imgur.com/X7CCrrh.jpeg", "https://www.linkedin.com/in/sewar-ismael-9b6a1528b/", "sewarismael2003@gmail.com"),
-    ("Shahd Aljamal", "https://i.imgur.com/4Af1aFP.jpeg", "https://www.linkedin.com/in/shahd-abdallah/", "abdallahshahd47@gmail.com")
+    ("https://i.imgur.com/X7CCrrh.jpeg", "Sewar Ismail", "https://www.linkedin.com/in/sewar-ismael-9b6a1528b/", "sewarismael2003@gmail.com"),
+    ("https://i.imgur.com/4Af1aFP.jpeg", "Shahd Aljamal", "https://www.linkedin.com/in/shahd-abdallah/", "abdallahshahd47@gmail.com")
 ]
 
 # --- Layout: Triangle ---
