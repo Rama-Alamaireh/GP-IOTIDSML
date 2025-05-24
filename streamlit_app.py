@@ -324,7 +324,7 @@ def circular_image(image_url, name, linkedin_url, email):
                      width="24" height="24" style="vertical-align: middle;" />
             </a>
             <a href="mailto:{email}">
-                <img src="https://e1.pngegg.com/pngimages/720/733/png-clipart-clay-os-6-a-macos-icon-mail-e-mail-icon-thumbnail.png" 
+                <img src="https://w7.pngwing.com/pngs/191/108/png-transparent-computer-icons-email-email-miscellaneous-blue-angle.png" 
                      width="24" height="24" style="vertical-align: middle;" />
             </a>
         </div>
