@@ -38,14 +38,11 @@ streamlit run streamlit_app.py
 ```
 Open your browser and go to the local link shown (usually: http://localhost:8501)
 ## How to Use
-Upload your IoT network dataset file in CSV format via the Streamlit app.
-
-The app will predict possible cyberattacks on the network data using the trained XGBoost model.
-
-Results, including detected attacks and risk scores, will be displayed interactively.
+ 1. Upload your IoT network dataset file in CSV format via the Streamlit app.
+ 2. The app will predict possible cyberattacks on the network data using the trained XGBoost model.
+ 3. Results, including detected attacks and risk scores, will be displayed interactively.
 
 ## Dataset
 This project uses the CICIoT2023 dataset for training and evaluation.
 You can download the dataset from the following sources:
-UNB CIC IoT Dataset
-Kaggle - UNB CIC IoT Dataset
+UNB CIC IoT Dataset on Kaggle
