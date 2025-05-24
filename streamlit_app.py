@@ -18,59 +18,48 @@ st.set_page_config(
 )
 
 # -------------------- Cyber Theme -------------------- #
-st.markdown("""
-<style>
+ st.markdown("""
+    <!-- Google Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-.appview-container {
-    background: 
-        linear-gradient(rgba(15, 17, 23, 0.75), rgba(15, 17, 23, 0.75)),
-        url('https://imageio.forbes.com/specials-images/imageserve/6436b538888732e60f6ba1ae//960x0.jpg?height=474&width=711&fit=bounds%27');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-.main {
-    background-color: transparent;
-}
+    <style>
+    .appview-container {
+        background: 
+            linear-gradient(rgba(15, 17, 23, 0.75), rgba(15, 17, 23, 0.75)),
+            url('https://imageio.forbes.com/specials-images/imageserve/6436b538888732e60f6ba1ae//960x0.jpg?height=474&width=711&fit=bounds%27');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+    }
+   
+    html, body, [class*="css"] {
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        color: white !important;
+    }
 
-.stButton>button, a > button {
-    background-color: #003366 !important;
-    color: white !important;
-    border-radius: 10px !important;
-    font-weight: bold !important;
-    border: none !important;
-    padding: 10px 20px !important;
-    cursor: pointer !important;
-}
-a > button:hover, .stButton>button:hover {
-    background-color: #001f4d !important;
-}
+    h1, h2, h3, h4, h5, h6, p, span, div {
+        color: white !important;
+    }
 
+    .main {
+        background-color: transparent;
+    }
 
-section[data-testid="stFileUploader"] {
-    background-color: #1e1e1e !important;
-    border-radius: 10px !important;
-    padding: 1rem !important;
-    color: white !important;
-}
+    .stButton>button, a > button {
+        background-color: #003366 !important;
+        color: white !important;
+        border-radius: 10px !important;
+        font-weight: bold !important;
+        border: none !important;
+        padding: 10px 20px !important;
+        cursor: pointer !important;
+    }
 
-
-section[data-testid="stFileUploader"] label {
-    color: white !important;
-    font-weight: bold !important;
-}
-
-section[data-testid="stFileUploader"] button {
-    background-color: #003366 !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 8px !important;
-    font-weight: bold !important;
-}
-section[data-testid="stFileUploader"] button:hover {
-    background-color: #001f4d !important;
-}
-</style>
+    a > button:hover {
+        background-color: #001f4d !important;
+    }
+    </style>
 """, unsafe_allow_html=True)
 
 # -------------------- Header -------------------- #
