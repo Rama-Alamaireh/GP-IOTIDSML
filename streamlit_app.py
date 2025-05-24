@@ -323,7 +323,7 @@ def circular_image(image_url, name):
 
 # --- Team members with direct image links 
 teammates = [
-    ("Rama Alamaireh", "https://i.imgur.com/sD4pIHh.jpeg","ramaalamairh0909@gmail.com"),
+    ("Rama Alamaireh", "https://i.imgur.com/sD4pIHh.jpeg"),
     ("Sewar Ismail", "https://i.imgur.com/X7CCrrh.jpeg"),
     ("Shahd Aljamal", "https://i.imgur.com/4Af1aFP.jpeg")
 ]
