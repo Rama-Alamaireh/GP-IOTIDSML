@@ -11,8 +11,8 @@ Among the evaluated models, XGBoost achieved the highest performance, making it 
 - Pandas (data handling)
 - Scikit-learn (model evaluation and preprocessing)
 
-## How to Run 
-How to Run the App
+
+## How to Run the App
 Online Access
 You can try the app directly without installation from this link:
 https://idsiotml.streamlit.app
