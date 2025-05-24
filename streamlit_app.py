@@ -336,5 +336,5 @@ st.markdown("""
     <br>
      <a href="mailto:spaghettiteamcy@gmail.com" style="color: #00c0ff;">spaghettiteamcy@gmail.com</a>
 </center>
->
+
 """, unsafe_allow_html=True)
