@@ -61,12 +61,11 @@ st.markdown("---")
 
 # -------------------- Load Pretrained Model & Label Encoder -------------------- #
 try:
-    model = joblib.load("Downloads/xgb_model (1).pkl")
-    label_encoder = joblib.load("Downloads/label_encoder (1).pkl")
+    model = joblib.load("xgb_model.pkl")
+    label_encoder = joblib.load("label_encoder.pkl")
 except Exception as e:
     st.error(f"❌ Failed to load model or encoder: {e}")
     st.stop()
-
 # -------------------- Attack Label Mapping -------------------- #
 attack_labels = {
     0: ('Backdoor_Malware', 'Malware that allows remote control of infected systems'),
