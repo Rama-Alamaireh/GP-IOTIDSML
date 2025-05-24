@@ -18,8 +18,10 @@ st.set_page_config(
 )
 
 # -------------------- Cyber Theme -------------------- #
-st.markdown(
-    """
+st.markdown("""
+    <!-- Google Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
     .appview-container {
         background: 
@@ -29,9 +31,22 @@ st.markdown(
         background-attachment: fixed;
         background-position: center;
     }
+
+    html, body, [class*="css"] {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        color: white;
+    }
+
+    h1, h2, h3, h4 {
+        font-weight: 700;
+        color: white;
+    }
+
     .main {
         background-color: transparent;
     }
+
     .stButton>button, a > button {
         background-color: #003366 !important;
         color: white !important;
@@ -41,13 +56,13 @@ st.markdown(
         padding: 10px 20px !important;
         cursor: pointer !important;
     }
+
     a > button:hover {
         background-color: #001f4d !important;
     }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
+
 
 # -------------------- Header -------------------- #
 st.markdown("<h1 style='text-align: center; color: white;'> ML-based Intrusion Detection System for IoT Networks</h1>", unsafe_allow_html=True)
