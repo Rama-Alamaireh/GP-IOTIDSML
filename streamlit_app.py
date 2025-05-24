@@ -322,14 +322,14 @@ def circular_image(image_url, name, linkedin_url, email):
             <a href="{linkedin_url}" target="_blank" style="margin-right: 10px;">
                 <img src="https://i.imgur.com/YoHLlN8.png" 
                      width="24" height="24" style="vertical-align: middle;" />
-            </a>
-            <a href="mailto:{email}">
-                <img src="https://i.imgur.com/pPih0Qn.png" 
+            </a><a href="mailto:{email}">
+                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" 
                      width="24" height="24" style="vertical-align: middle;" />
             </a>
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 
 # --- Team members with image, LinkedIn, and email
 teammates = [
