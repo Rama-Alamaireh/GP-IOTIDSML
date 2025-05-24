@@ -16,8 +16,8 @@ Among the evaluated models, XGBoost achieved the highest performance, making it 
    ```bash
    git clone <your-repository-url>
    cd <repository-folder>
-Create a virtual environment and activate it (optional but recommended):
-
+2. Create a virtual environment and activate it (optional but recommended):
+ ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 Install the required packages:
@@ -28,21 +28,16 @@ Run the Streamlit app:
 
 streamlit run app.py
 Open your browser and go to the local link shown (usually http://localhost:8501).
-
-How to Use
+ ```
+##How to Use
 Upload your IoT network dataset file in CSV format via the Streamlit app.
 
 The app will predict possible cyberattacks on the network data using the trained XGBoost model.
 
-Results including detected attacks and risk scores will be displayed interactively.
+Results, including detected attacks and risk scores, will be displayed interactively.
 
-Dataset
+##Dataset
 This project uses the CICIoT2023 dataset for training and evaluation.
 You can download the dataset from the following sources:
 UNB CIC IoT Dataset
 Kaggle - UNB CIC IoT Dataset
-
-Author
-Rama Ibrahim Alamaireh
-Shahd Abdallah Aljamal
-Sewar Ismail Yaqou
