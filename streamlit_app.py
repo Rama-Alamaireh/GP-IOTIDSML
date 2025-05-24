@@ -333,8 +333,6 @@ def circular_image(image_url, name, linkedin_url, email):
         </div>
     </div>
     """, unsafe_allow_html=True)
-)
-
 
 # --- Team members with image, LinkedIn, and email
 teammates = [
