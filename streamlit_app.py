@@ -320,7 +320,7 @@ def circular_image(image_url, name, linkedin_url, email):
         <div style="margin-top: 10px; font-weight: bold; color: white;">{name}</div>
         <div style="margin-top: 8px;">
             <a href="{linkedin_url}" target="_blank" style="margin-right: 10px;">
-                <img src="https://toppng.com/uploads/preview/linkedin-logo-png-image-11660255218b6k229mgw8.png" 
+                <img src="https://i.imgur.com/YoHLlN8.png" 
                      width="24" height="24" style="vertical-align: middle;" />
             </a>
             <a href="mailto:{email}">
