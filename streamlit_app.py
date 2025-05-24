@@ -65,11 +65,11 @@ st.markdown("---")
 model_path = "xgb_model.pkl"
 encoder_path = "label_encoder.pkl"
 
-st.write("Model file exists:", os.path.exists(model_path))
-st.write("Encoder file exists:", os.path.exists(encoder_path))
+#st.write("Model file exists:", os.path.exists(model_path))
+#st.write("Encoder file exists:", os.path.exists(encoder_path))
 
-st.write("Model file readable:", os.access(model_path, os.R_OK))
-st.write("Encoder file readable:", os.access(encoder_path, os.R_OK))
+#st.write("Model file readable:", os.access(model_path, os.R_OK))
+#st.write("Encoder file readable:", os.access(encoder_path, os.R_OK))
 
 try:
     model = joblib.load(model_path)
