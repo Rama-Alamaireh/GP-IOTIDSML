@@ -275,10 +275,8 @@ import streamlit as st
 st.markdown("---")
 st.subheader("Download Our Study")
 
-# ✅ رابط Google Drive الجديد (مباشر للتحميل)
 drive_link = "https://drive.google.com/uc?export=download&id=1Sdz1hDmWEEQIhR8m7EI8EJ2Rs5JBDGKm"
 
-# زر التحميل المصمم
 st.markdown(f"""
     <div>
         <a href="{drive_link}" target="_blank">
@@ -310,7 +308,7 @@ def circular_image(image_url, name):
     </div>
     """, unsafe_allow_html=True)
 
-# --- Team members with direct image links (replace with real direct links from Imgur) ---
+# --- Team members with direct image links 
 teammates = [
     ("Rama Alamaireh", "https://i.imgur.com/sD4pIHh.jpeg"),
     ("Sewar Ismail", "https://i.imgur.com/X7CCrrh.jpeg"),
