@@ -31,6 +31,31 @@ st.markdown("""
         background-attachment: fixed;
         background-position: center;
     }
+    /* تخصيص خلفية أداة رفع الملفات */
+section[data-testid="stFileUploader"] {
+    background-color: #1e1e1e !important; /* غامق */
+    border-radius: 10px !important;
+    padding: 1rem !important;
+    color: white !important;
+}
+
+/* تخصيص لون النص داخل زر الرفع */
+section[data-testid="stFileUploader"] label {
+    color: white !important;
+}
+
+/* تخصيص لون زر التحديد (Browse) */
+section[data-testid="stFileUploader"] button {
+    background-color: #003366 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+}
+
+section[data-testid="stFileUploader"] button:hover {
+    background-color: #001f4d !important;
+}
 
     html, body, [class*="css"] {
         font-family: 'Poppins', sans-serif !important;
