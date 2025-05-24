@@ -18,6 +18,8 @@ st.set_page_config(
 )
 
 # -------------------- Cyber Theme -------------------- #
+import streamlit as st
+
 st.markdown("""
     <!-- Google Font: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -59,6 +61,23 @@ st.markdown("""
     a > button:hover {
         background-color: #001f4d !important;
     }
+
+    /* Force dark style for file uploader */
+    .stFileUploader {
+        background-color: #1c1c1c !important;
+        border: 2px dashed #444 !important;
+        color: white !important;
+        border-radius: 10px !important;
+    }
+
+    .stFileUploader label div {
+        color: white !important;
+    }
+
+    .stFileUploader:hover {
+        border-color: #666 !important;
+    }
+
     </style>
 """, unsafe_allow_html=True)
 # -------------------- Header -------------------- #
