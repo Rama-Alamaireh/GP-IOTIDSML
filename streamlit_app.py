@@ -326,7 +326,7 @@ def circular_image(image_url, name, linkedin_url, email):
             </span>
             <span style="display: inline-block;">
                 <a href="mailto:{email}">
-                    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" 
+                    <img src="https://i.imgur.com/pPih0Qn.png" 
                          width="24" height="24" style="vertical-align: middle;" />
                 </a>
             </span>
