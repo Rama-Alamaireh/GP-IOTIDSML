@@ -11,24 +11,32 @@ Among the evaluated models, XGBoost achieved the highest performance, making it 
 - Pandas (data handling)
 - Scikit-learn (model evaluation and preprocessing)
 
+## How to Run 
+How to Run the App
+Online Access
+You can try the app directly without installation from this link:
+https://idsiotml.streamlit.app
+
 ## How to Run Locally
-1. Clone the repository:
-   ```bash
-   git clone <your-repository-url>
-   cd <repository-folder>
-2. Create a virtual environment and activate it (optional but recommended):
- ```bash
+1. Clone the repository
+```bash
+git clone https://github.com/Rama-Alamaireh/GP-IOTIDSML.git
+cd GP-IOTIDSML
+```
+2. Create a virtual environment and activate it (optional but recommended)
+```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install the required packages:
-
-
+source venv/bin/activate        # On Windows: venv\Scripts\activate
+```
+3. Install required packages
+```bash
 pip install -r requirements.txt
-Run the Streamlit app:
-
-streamlit run app.py
-Open your browser and go to the local link shown (usually http://localhost:8501).
- ```
+```
+4. Run the Streamlit app
+```bach
+streamlit run streamlit_app.py
+```
+Open your browser and go to the local link shown (usually: http://localhost:8501)
 ## How to Use
 Upload your IoT network dataset file in CSV format via the Streamlit app.
 
