@@ -287,7 +287,7 @@ import streamlit as st
 # -------------------- Download Section -------------------- #
 st.markdown("---")
 st.subheader("Download Our Study")
-drive_link = "https://drive.google.com/uc?export=download&id=1Rc2fGzyG6BAdSuqMGdLYEG1H2iA8t05V"
+drive_link = "https://drive.google.com/uc?export=download&id=14Z4E_bcicpNCjTq6olOvUwT4ZT_zYYJt"
 st.markdown(f"""
     <div>
         <a href="{drive_link}" target="_blank">
@@ -305,6 +305,7 @@ st.markdown(f"""
         </a>
     </div>
 """, unsafe_allow_html=True)
+
 # -------------------- Our Team -------------------- #
 st.markdown("---")
 st.subheader("Our Team")
