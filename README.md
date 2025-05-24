@@ -13,7 +13,7 @@ Among the evaluated models, XGBoost achieved the highest performance, making it 
 
 
 ## How to Run the App
-Online Access
+Online Access:
 You can try the app directly without installation from this link:
 https://idsiotml.streamlit.app
 
