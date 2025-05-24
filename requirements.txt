@@ -38,7 +38,7 @@ ipywidgets==8.1.5
 isoduration==20.11.0
 jedi==0.19.2
 Jinja2==3.1.5
-joblib==1.4.2
+joblib
 json5==0.10.0
 jsonpointer==3.0.0
 jsonschema==4.23.0
@@ -127,4 +127,4 @@ webcolors==24.11.1
 webencodings==0.5.1
 websocket-client==1.8.0
 widgetsnbextension==4.0.13
-xgboost==3.0.1
+xgboost
