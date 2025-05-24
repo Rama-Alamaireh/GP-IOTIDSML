@@ -333,34 +333,9 @@ def circular_image(image_url, name, linkedin_url, email):
 
 # --- Team members with image, LinkedIn, and email
 teammates = [
-    ("Rama Alamaireh", "https://i.imgur.com/sD4pIHh.jpeg", "# -------------------- Our Team -------------------- #
-st.markdown("---")
-st.subheader("Our Team")
-
-def circular_image(image_url, name, linkedin_url, email):
-    st.markdown(f"""
-    <div style="text-align: center;">
-        <img src="{image_url}" 
-             style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;" />
-        <div style="margin-top: 10px; font-weight: bold; color: white;">{name}</div>
-        <div style="margin-top: 8px;">
-            <a href="{linkedin_url}" target="_blank" style="margin-right: 10px;">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" 
-                     width="24" height="24" style="vertical-align: middle;" />
-            </a>
-            <a href="mailto:{email}">
-                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" 
-                     width="24" height="24" style="vertical-align: middle;" />
-            </a>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# --- Team members with image, LinkedIn, and email
-teammates = [
-    ("Rama Alamaireh", "https://i.imgur.com/sD4pIHh.jpeg, "https://www.linkedin.com/in/ramaalamaireh", "ramaalamairh0909@gmail.com"),
+    ("Rama Alamaireh", "https://i.imgur.com/sD4pIHh.jpeg", "https://www.linkedin.com/in/ramaalamaireh", "ramaalamairh0909@gmail.com"),
     ("Sewar Ismail", "https://i.imgur.com/X7CCrrh.jpeg", "https://www.linkedin.com/in/sewar-ismael-9b6a1528b/", "sewarismael2003@gmail.com"),
-    ("Shahd Aljamal", "https://i.imgur.com/4Af1aFP.jpeg, "https://www.linkedin.com/in/shahd-abdallah/", "abdallahshahd47@gmail.com")
+    ("Shahd Aljamal", "https://i.imgur.com/4Af1aFP.jpeg", "https://www.linkedin.com/in/shahd-abdallah/", "abdallahshahd47@gmail.com")
 ]
 
 # --- Layout: Triangle ---
@@ -373,22 +348,6 @@ with col_bottom[0]:
     circular_image(*teammates[1])
 with col_bottom[1]:
     circular_image(*teammates[2])
-", "rama@email.com"),
-    ("Sewar Ismail", "https://i.imgur.com/X7CCrrh.jpeg", "https://www.linkedin.com/in/sewarismail", "sewar@email.com"),
-    ("Shahd Aljamal", "https://i.imgur.com/4Af1aFP.jpeg", "https://www.linkedin.com/in/shahdaljamal", "shahd@email.com")
-]
-
-# --- Layout: Triangle ---
-col_top = st.columns(3)
-with col_top[1]:
-    circular_image(*teammates[0])
-
-col_bottom = st.columns(2)
-with col_bottom[0]:
-    circular_image(*teammates[1])
-with col_bottom[1]:
-    circular_image(*teammates[2])
-
 
 # -------------------- Footer -------------------- #
 st.markdown("""
