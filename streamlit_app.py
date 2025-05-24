@@ -310,34 +310,45 @@ st.markdown(f"""
 
 # -------------------- Our Team -------------------- #
 st.markdown("---")
-st.subheader(" Our Team")
+st.subheader("Our Team")
 
-def circular_image(image_url, name):
+def circular_image(image_url, name, linkedin_url, email):
     st.markdown(f"""
     <div style="text-align: center;">
         <img src="{image_url}" 
              style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;" />
         <div style="margin-top: 10px; font-weight: bold; color: white;">{name}</div>
+        <div style="margin-top: 8px;">
+            <a href="{linkedin_url}" target="_blank" style="margin-right: 10px;">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" 
+                     width="24" height="24" style="vertical-align: middle;" />
+            </a>
+            <a href="mailto:{email}">
+                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" 
+                     width="24" height="24" style="vertical-align: middle;" />
+            </a>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
-# --- Team members with direct image links 
+# --- Team members with image, LinkedIn, and email
 teammates = [
-    ("Rama Alamaireh", "https://i.imgur.com/sD4pIHh.jpeg"),
-    ("Sewar Ismail", "https://i.imgur.com/X7CCrrh.jpeg"),
-    ("Shahd Aljamal", "https://i.imgur.com/4Af1aFP.jpeg")
+    ("Rama Alamaireh", "https://i.imgur.com/sD4pIHh.jpeg", "https://www.linkedin.com/in/ramaalamaireh", "rama@email.com"),
+    ("Sewar Ismail", "https://i.imgur.com/X7CCrrh.jpeg", "https://www.linkedin.com/in/sewarismail", "sewar@email.com"),
+    ("Shahd Aljamal", "https://i.imgur.com/4Af1aFP.jpeg", "https://www.linkedin.com/in/shahdaljamal", "shahd@email.com")
 ]
 
 # --- Layout: Triangle ---
 col_top = st.columns(3)
 with col_top[1]:
-    circular_image(teammates[0][1], teammates[0][0])
+    circular_image(*teammates[0])
 
 col_bottom = st.columns(2)
 with col_bottom[0]:
-    circular_image(teammates[1][1], teammates[1][0])
+    circular_image(*teammates[1])
 with col_bottom[1]:
-    circular_image(teammates[2][1], teammates[2][0])
+    circular_image(*teammates[2])
+
 
 # -------------------- Footer -------------------- #
 st.markdown("""
