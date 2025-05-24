@@ -33,14 +33,13 @@ st.markdown("""
     }
 
     html, body, [class*="css"] {
-        font-family: 'Poppins', sans-serif;
-        font-size: 16px;
-        color: white;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+        color: white !important;
     }
 
-    h1, h2, h3, h4 {
-        font-weight: 700;
-        color: white;
+    h1, h2, h3, h4, h5, h6, p, span, div {
+        color: white !important;
     }
 
     .main {
