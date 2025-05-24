@@ -4,6 +4,7 @@ import numpy as np
 import base64
 import joblib
 import os
+import traceback
 from xgboost import XGBClassifier
 from sklearn.preprocessing import LabelEncoder
 from PIL import Image
