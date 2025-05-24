@@ -75,6 +75,7 @@ try:
     label_encoder = joblib.load(encoder_path)
 except Exception as e:
     st.error(f"❌ Failed to load model or encoder: {e}")
+    st.error(traceback.format_exc())
     st.stop()
 
 # -------------------- Attack Label Mapping -------------------- #
