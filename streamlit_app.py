@@ -208,15 +208,23 @@ if uploaded_file is not None:
             attack_counts = pd.Series(attack_names).value_counts().reset_index()
             attack_counts.columns = ['Attack Type', 'Count']
 
-            import plotly.express as px  # تأكدي أنه مستورد
+            import plotly.express as px
 
             fig_pie = px.pie(
                 attack_counts,
                 names='Attack Type',
                 values='Count',
                 title="🔍 Distribution of Detected Attack Types",
-                color_discrete_sequence=px.colors.sequential.RdBu,
+                color_discrete_sequence=px.colors.qualitative.Pastel,  # ألوان ناعمة
                 hole=0.3
+            )
+
+            fig_pie.update_layout(
+                paper_bgcolor='rgba(0,0,0,0)',  # إزالة خلفية الرسم
+                plot_bgcolor='rgba(0,0,0,0)',   # إزالة خلفية المخطط
+                title_font_size=20,
+                legend_title="",
+                legend_font_size=12
             )
 
             st.markdown("### 📊 Attack Distribution")
@@ -242,6 +250,7 @@ if uploaded_file is not None:
 
     except Exception as e:
         st.error(f"❌ Error reading or processing file: {e}")
+
 
 # -------------------- Upload Dataset with Label (For Accuracy Calculation) -------------------- #
 st.markdown("---")
