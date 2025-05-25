@@ -275,7 +275,7 @@ if uploaded_file is not None:
                     'threshold': {
                         'line': {'color': "red", 'width': 4},
                         'thickness': 0.75,
-                        'value': risk_score
+                        'value': risk_score,
                          height=300,
                     }
                 }
