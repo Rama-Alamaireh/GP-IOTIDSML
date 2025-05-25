@@ -247,11 +247,11 @@ if uploaded_file is not None:
             if risk_score == 0:
                 st.success("Your network is currently safe. Keep monitoring regularly.")
             elif risk_score <= 20:
-                st.info("Low risk detected. Review activities and update firewall rules.")
+                st.info("Low risk detected🟩. Review activities and update firewall rules.")
             elif risk_score <= 50:
-                st.warning("Moderate risk. Patch vulnerabilities and monitor actively.")
+                st.warning("Moderate risk🟧. Patch vulnerabilities and monitor actively.")
             else:
-                st.error("High risk! Take immediate action to secure your network.")
+                st.error("High risk!🟥 Take immediate action to secure your network.")
 
             # -------- Circular Progress Chart for Risk Score -------- #
             fig_circle = go.Figure(go.Indicator(
