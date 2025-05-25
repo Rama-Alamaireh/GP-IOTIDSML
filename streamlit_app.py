@@ -255,8 +255,8 @@ if uploaded_file is not None:
             # -------- Circular Progress Chart for Risk Score -------- #
             fig_circle = go.Figure(go.Indicator(
                 mode="gauge+number",
-                'number': {'suffix': '%'}
                 value=risk_score,
+                'number': {'suffix': '%'}
                 domain={'x': [0, 1], 'y': [0, 1]},
                 title={'text': "Network Risk Score", 'font': {'size': 20}},
                 gauge={
