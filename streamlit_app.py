@@ -193,6 +193,7 @@ if uploaded_file is not None:
             st.write("### Predicted Attack Classes:")
 
             results_with_recommendations = []
+            attack_names = []
             for label in preds:
                 attack_name, description = attack_labels.get(label, ("Unknown", ""))
                 recommendation = attack_recommendations.get(attack_name, "No recommendation available.")
@@ -201,11 +202,11 @@ if uploaded_file is not None:
                     "Description": description,
                     "Recommendation": recommendation
                 })
+                attack_names.append(attack_name)
 
             st.dataframe(pd.DataFrame(results_with_recommendations))
 
-            # -------- Pie Chart: Attack Type Distribution -------- #
-            attack_names = [res["Predicted Attack"] for res in results_with_recommendations]
+            # ----------------- Pie Chart ------------------ #
             attack_counts = pd.Series(attack_names).value_counts().reset_index()
             attack_counts.columns = ['Attack Type', 'Count']
 
@@ -220,7 +221,6 @@ if uploaded_file is not None:
 
             fig_pie.update_traces(
                 textinfo='percent+label',
-                pull=[0.03]*len(attack_counts),
                 marker=dict(line=dict(color='white', width=1))
             )
 
@@ -234,55 +234,78 @@ if uploaded_file is not None:
             st.markdown("### 📊 Attack Distribution")
             st.plotly_chart(fig_pie, use_container_width=True)
 
-            # -------- Risk Score Calculation -------- #
             st.markdown("---")
-            st.subheader("⚠️ Risk Score Calculator")
+            st.subheader("⚠️ Cyber Risk Score & Recommendations")
 
-            total = len(preds)
-            attacks_count = sum([1 for p in preds if p != 1])
-            risk_score = round((attacks_count / total) * 100, 2)
+            # ----------------- Cyber Risk Score Logic ------------------ #
+            attack_severity = {
+                "DDoS": 90,
+                "Ransomware": 85,
+                "SQL Injection": 75,
+                "Brute Force": 65,
+                "Port Scan": 30,
+                "Benign": 0,
+                "Unknown": 50
+            }
 
-            st.markdown(f"**Risk Score:** {risk_score}%")
-            if risk_score == 0:
-                st.success("Your network is currently safe. Keep monitoring regularly.")
-            elif risk_score <= 20:
-                st.info("Low risk detected. Review activities and update firewall rules.")
+            total_score = 0
+            for attack in attack_names:
+                total_score += attack_severity.get(attack, 50)
+
+            risk_score = round(total_score / len(attack_names), 2)
+
+            # ----------------- Risk Level Classification ------------------ #
+            if risk_score <= 20:
+                level = "🟢 Low"
+                st.success(f"**Risk Level: {level}** — Network appears safe.")
+                recommendation = "Continue monitoring and keep systems up-to-date."
             elif risk_score <= 50:
-                st.warning("Moderate risk. Patch vulnerabilities and monitor actively.")
+                level = "🟡 Medium"
+                st.info(f"**Risk Level: {level}** — Some suspicious activity detected.")
+                recommendation = "Review firewall rules and monitor unusual traffic."
+            elif risk_score <= 75:
+                level = "🔴 High"
+                st.warning(f"**Risk Level: {level}** — Network is under possible attack.")
+                recommendation = "Conduct vulnerability assessments and increase logging."
             else:
-                st.error("High risk! Take immediate action to secure your network.")
+                level = "🔥 Critical"
+                st.error(f"**Risk Level: {level}** — Immediate threat detected!")
+                recommendation = "Isolate affected systems and initiate incident response."
 
-            # -------- Circular Progress Chart for Risk Score -------- #
+            st.markdown(f"**Cyber Risk Score:** `{risk_score}%`")
+            st.markdown(f"**Recommendation:** {recommendation}")
+
+            # ----------------- Circular Gauge Chart ------------------ #
             fig_circle = go.Figure(go.Indicator(
                 mode="gauge+number",
                 value=risk_score,
-                number={'suffix': '%'},
                 domain={'x': [0, 1], 'y': [0, 1]},
-                title={'text': "Network Risk Score", 'font': {'size': 20}},
+                title={'text': "Cyber Risk Score", 'font': {'size': 18}},
                 gauge={
-                    'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-                    'bar': {'color': "royalblue"},
+                    'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "blue"},
+                    'bar': {'color': "deepskyblue"},
                     'bgcolor': "white",
-                    'borderwidth': 2,
-                    'bordercolor': "gray",
+                    'borderwidth': 1,
+                    'bordercolor': "lightgray",
                     'steps': [
-                        {'range': [0, 20], 'color': '#c6f0ff'},
-                        {'range': [20, 50], 'color': '#7ecbff'},
-                        {'range': [50, 100], 'color': '#4682b4'}
+                        {'range': [0, 20], 'color': '#d2f4ff'},
+                        {'range': [20, 50], 'color': '#93d4ff'},
+                        {'range': [50, 75], 'color': '#4fa3f7'},
+                        {'range': [75, 100], 'color': '#1c75bc'}
                     ],
                     'threshold': {
-                        'line': {'color': "red", 'width': 4},
+                        'line': {'color': "red", 'width': 3},
                         'thickness': 0.75,
-                        'value': risk_score,
+                        'value': risk_score
                     }
                 }
             ))
 
             fig_circle.update_layout(
                 paper_bgcolor='rgba(0,0,0,0)',
-                font={'color': "white", 'family': "Arial"},
-                margin=dict(t=50, b=0, l=0, r=0),
-                height=300,
+                font={'color': "black", 'family': "Arial"},
+                margin=dict(t=40, b=0, l=0, r=0),
+                height=280  # تصغير الحجم شوي
             )
 
             st.markdown("### 🛡️ Visual Risk Indicator")
@@ -290,6 +313,7 @@ if uploaded_file is not None:
 
     except Exception as e:
         st.error(f"❌ Error reading or processing file: {e}")
+
 # -------------------- Upload Dataset with Label (For Accuracy Calculation) -------------------- #
 st.markdown("---")
 st.subheader("📂 Upload Dataset with Labels (for accuracy check)")
