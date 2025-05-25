@@ -256,7 +256,7 @@ if uploaded_file is not None:
             fig_circle = go.Figure(go.Indicator(
                 mode="gauge+number",
                 value=risk_score,
-                number: {'suffix': '%'}
+                number: {'suffix': '%'},
                 domain={'x': [0, 1], 'y': [0, 1]},
                 title={'text': "Network Risk Score", 'font': {'size': 20}},
                 gauge={
