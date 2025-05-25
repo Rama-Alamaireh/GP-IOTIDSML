@@ -208,7 +208,6 @@ if uploaded_file is not None:
             attack_counts = pd.Series(attack_names).value_counts().reset_index()
             attack_counts.columns = ['Attack Type', 'Count']
 
-            import plotly.express as px
 
             fig_pie = px.pie(
                 attack_counts,
