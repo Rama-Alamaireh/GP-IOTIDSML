@@ -236,7 +236,7 @@ if uploaded_file is not None:
 
             # -------- Risk Score Calculation -------- #
             st.markdown("---")
-            st.subheader("⚠️ Risk Score & Security Recommendations")
+            st.subheader("⚠️ Risk Score Calculator")
 
             total = len(preds)
             attacks_count = sum([1 for p in preds if p != 1])
@@ -283,7 +283,7 @@ if uploaded_file is not None:
                 paper_bgcolor='rgba(0,0,0,0)',
                 font={'color': "white", 'family': "Arial"},
                 margin=dict(t=50, b=0, l=0, r=0),
-                height=300
+                height=250
             )
 
             st.markdown("### 🛡️ Visual Risk Indicator")
