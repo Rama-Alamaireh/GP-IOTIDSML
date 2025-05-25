@@ -209,7 +209,6 @@ if uploaded_file is not None:
             attack_counts = pd.Series(attack_names).value_counts().reset_index()
             attack_counts.columns = ['Attack Type', 'Count']
 
-            import plotly.express as px
             fig_pie = px.pie(
                 attack_counts,
                 names='Attack Type',
@@ -237,14 +236,13 @@ if uploaded_file is not None:
 
             # -------- Risk Score Calculation -------- #
             st.markdown("---")
-            st.subheader("⚠️ Risk Score & Security Recommendations")
+            st.subheader("⚠️ Risk Score Calculator")
 
             total = len(preds)
             attacks_count = sum([1 for p in preds if p != 1])
             risk_score = round((attacks_count / total) * 100, 2)
 
             st.markdown(f"**Risk Score:** {risk_score}%")
-
             if risk_score == 0:
                 st.success("Your network is currently safe. Keep monitoring regularly.")
             elif risk_score <= 20:
@@ -255,9 +253,9 @@ if uploaded_file is not None:
                 st.error("High risk! Take immediate action to secure your network.")
 
             # -------- Circular Progress Chart for Risk Score -------- #
-            import plotly.graph_objects as go
             fig_circle = go.Figure(go.Indicator(
                 mode="gauge+number",
+                'number': {'suffix': '%'}
                 value=risk_score,
                 domain={'x': [0, 1], 'y': [0, 1]},
                 title={'text': "Network Risk Score", 'font': {'size': 20}},
