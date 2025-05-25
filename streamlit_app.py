@@ -5,6 +5,7 @@ import base64
 import joblib
 import plotly.express as px
 import os
+import plotly.graph_objects as go
 import traceback
 from xgboost import XGBClassifier
 from sklearn.preprocessing import LabelEncoder
@@ -254,6 +255,39 @@ if uploaded_file is not None:
 
     except Exception as e:
         st.error(f"❌ Error reading or processing file: {e}")
+# -------- Circular Progress Chart for Risk Score -------- #
+fig_circle = go.Figure(go.Indicator(
+    mode="gauge+number",
+    value=risk_score,
+    domain={'x': [0, 1], 'y': [0, 1]},
+    title={'text': "Network Risk Score", 'font': {'size': 20}},
+    gauge={
+        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
+        'bar': {'color': "royalblue"},
+        'bgcolor': "white",
+        'borderwidth': 2,
+        'bordercolor': "gray",
+        'steps': [
+            {'range': [0, 20], 'color': '#c6f0ff'},
+            {'range': [20, 50], 'color': '#7ecbff'},
+            {'range': [50, 100], 'color': '#4682b4'}
+        ],
+        'threshold': {
+            'line': {'color': "red", 'width': 4},
+            'thickness': 0.75,
+            'value': risk_score
+        }
+    }
+))
+
+fig_circle.update_layout(
+    paper_bgcolor='rgba(0,0,0,0)',
+    font={'color': "black", 'family': "Arial"},
+    margin=dict(t=50, b=0, l=0, r=0)
+)
+
+st.markdown("### 🛡️ Visual Risk Indicator")
+st.plotly_chart(fig_circle, use_container_width=True)
 # -------------------- Upload Dataset with Label (For Accuracy Calculation) -------------------- #
 st.markdown("---")
 st.subheader("📂 Upload Dataset with Labels (for accuracy check)")
