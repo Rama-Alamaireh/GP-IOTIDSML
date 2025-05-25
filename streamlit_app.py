@@ -169,6 +169,7 @@ attack_recommendations = {
 }
 
 # -------------------- Upload Dataset without Label (For Prediction) -------------------- #
+# -------------------- Upload Dataset without Label (For Prediction) -------------------- #
 st.subheader("📂 Upload Dataset (features only, no label)")
 uploaded_file = st.file_uploader("Upload CSV File", type=["csv"], key="no_label")
 
@@ -215,16 +216,22 @@ if uploaded_file is not None:
                 names='Attack Type',
                 values='Count',
                 title="🔍 Distribution of Detected Attack Types",
-                color_discrete_sequence=px.colors.qualitative.Pastel,  # ألوان ناعمة
+                color_discrete_sequence=px.colors.sequential.Blues,  # درجات الأزرق
                 hole=0.3
             )
 
+            # تخصيص الشكل لإزالة الخلفية والسهم الخارجي
+            fig_pie.update_traces(
+                textinfo='percent+label',     # إظهار النسبة والاسم داخل القطع
+                pull=[0.03]*len(attack_counts),  # خفيف جدًا لإبراز القطع
+                marker=dict(line=dict(color='white', width=1))  # حواف بيضاء ناعمة
+            )
+
             fig_pie.update_layout(
-                paper_bgcolor='rgba(0,0,0,0)',  # إزالة خلفية الرسم
-                plot_bgcolor='rgba(0,0,0,0)',   # إزالة خلفية المخطط
-                title_font_size=20,
-                legend_title="",
-                legend_font_size=12
+                showlegend=True,
+                paper_bgcolor='rgba(0,0,0,0)',  # خلفية شفافة
+                plot_bgcolor='rgba(0,0,0,0)',
+                title_font_size=18
             )
 
             st.markdown("### 📊 Attack Distribution")
@@ -250,8 +257,6 @@ if uploaded_file is not None:
 
     except Exception as e:
         st.error(f"❌ Error reading or processing file: {e}")
-
-
 # -------------------- Upload Dataset with Label (For Accuracy Calculation) -------------------- #
 st.markdown("---")
 st.subheader("📂 Upload Dataset with Labels (for accuracy check)")
