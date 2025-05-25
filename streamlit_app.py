@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import base64
 import joblib
+import plotly.express as px
 import os
 import traceback
 from xgboost import XGBClassifier
@@ -200,6 +201,23 @@ if uploaded_file is not None:
                 })
 
             st.dataframe(pd.DataFrame(results_with_recommendations))
+
+# -------- Pie Chart: Attack Type Distribution -------- #
+attack_names = [res["Predicted Attack"] for res in results_with_recommendations]
+attack_counts = pd.Series(attack_names).value_counts().reset_index()
+attack_counts.columns = ['Attack Type', 'Count']
+
+fig_pie = px.pie(
+    attack_counts,
+    names='Attack Type',
+    values='Count',
+    title="🔍 Distribution of Detected Attack Types",
+    color_discrete_sequence=px.colors.sequential.RdBu,
+    hole=0.3
+)
+
+st.markdown("### 📊 Attack Distribution")
+st.plotly_chart(fig_pie, use_container_width=True)
 
             st.markdown("---")
             st.subheader("⚠️ Risk Score & Security Recommendations")
