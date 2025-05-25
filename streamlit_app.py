@@ -276,7 +276,6 @@ if uploaded_file is not None:
                         'line': {'color': "red", 'width': 4},
                         'thickness': 0.75,
                         'value': risk_score,
-                         height=300,
                     }
                 }
             ))
@@ -285,6 +284,7 @@ if uploaded_file is not None:
                 paper_bgcolor='rgba(0,0,0,0)',
                 font={'color': "white", 'family': "Arial"},
                 margin=dict(t=50, b=0, l=0, r=0)
+                height=300,
             )
 
             st.markdown("### 🛡️ Visual Risk Indicator")
