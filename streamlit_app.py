@@ -181,62 +181,63 @@ if uploaded_file is not None:
 
         st.write("### Dataset Preview:")
         st.dataframe(data.head())
+if st.button("🚀 Predict Attacks", key="predict_no_label"):
+    preds = model.predict(data)
+    preds_named = [(attack_labels.get(label, ("Unknown", ""))[0],
+                    attack_labels.get(label, ("Unknown", ""))[1])
+                   for label in preds]
+    st.success("✅ Prediction Completed!")
+    st.write("### Predicted Attack Classes:")
 
-        if st.button("🚀 Predict Attacks", key="predict_no_label"):
-            preds = model.predict(data)
-            preds_named = [(attack_labels.get(label, ("Unknown", ""))[0],
-                            attack_labels.get(label, ("Unknown", ""))[1])
-                           for label in preds]
-            st.success("✅ Prediction Completed!")
-            st.write("### Predicted Attack Classes:")
+    results_with_recommendations = []
+    for label in preds:
+        attack_name, description = attack_labels.get(label, ("Unknown", ""))
+        recommendation = attack_recommendations.get(attack_name, "No recommendation available.")
+        results_with_recommendations.append({
+            "Predicted Attack": attack_name,
+            "Description": description,
+            "Recommendation": recommendation
+        })
 
-            results_with_recommendations = []
-            for label in preds:
-                attack_name, description = attack_labels.get(label, ("Unknown", ""))
-                recommendation = attack_recommendations.get(attack_name, "No recommendation available.")
-                results_with_recommendations.append({
-                    "Predicted Attack": attack_name,
-                    "Description": description,
-                    "Recommendation": recommendation
-                })
+    st.dataframe(pd.DataFrame(results_with_recommendations))
 
-            st.dataframe(pd.DataFrame(results_with_recommendations))
+    # -------- Pie Chart: Attack Type Distribution -------- #
+    attack_names = [res["Predicted Attack"] for res in results_with_recommendations]
+    attack_counts = pd.Series(attack_names).value_counts().reset_index()
+    attack_counts.columns = ['Attack Type', 'Count']
 
-# -------- Pie Chart: Attack Type Distribution -------- #
-attack_names = [res["Predicted Attack"] for res in results_with_recommendations]
-attack_counts = pd.Series(attack_names).value_counts().reset_index()
-attack_counts.columns = ['Attack Type', 'Count']
+    import plotly.express as px  # تأكدي إنه plotly مستورد
 
-fig_pie = px.pie(
-    attack_counts,
-    names='Attack Type',
-    values='Count',
-    title="🔍 Distribution of Detected Attack Types",
-    color_discrete_sequence=px.colors.sequential.RdBu,
-    hole=0.3
-)
+    fig_pie = px.pie(
+        attack_counts,
+        names='Attack Type',
+        values='Count',
+        title="🔍 Distribution of Detected Attack Types",
+        color_discrete_sequence=px.colors.sequential.RdBu,
+        hole=0.3
+    )
 
-st.markdown("### 📊 Attack Distribution")
-st.plotly_chart(fig_pie, use_container_width=True)
+    st.markdown("### 📊 Attack Distribution")
+    st.plotly_chart(fig_pie, use_container_width=True)
 
-            st.markdown("---")
-            st.subheader("⚠️ Risk Score & Security Recommendations")
+    st.markdown("---")
+    st.subheader("⚠️ Risk Score & Security Recommendations")
 
-            total = len(preds)
-            # 1 هو BenignTraffic في قاموس الهجمات
-            attacks_count = sum([1 for p in preds if p != 1])
-            risk_score = round((attacks_count / total) * 100, 2)
+    total = len(preds)
+    attacks_count = sum([1 for p in preds if p != 1])
+    risk_score = round((attacks_count / total) * 100, 2)
 
-            st.markdown(f"**Risk Score:** {risk_score}%")
+    st.markdown(f"**Risk Score:** {risk_score}%")
 
-            if risk_score == 0:
-                st.success("Your network is currently safe. Keep monitoring regularly.")
-            elif risk_score <= 20:
-                st.info("Low risk detected. Review activities and update firewall rules.")
-            elif risk_score <= 50:
-                st.warning("Moderate risk. Patch vulnerabilities and monitor actively.")
-            else:
-                st.error("High risk! Take immediate action to secure your network.")
+    if risk_score == 0:
+        st.success("Your network is currently safe. Keep monitoring regularly.")
+    elif risk_score <= 20:
+        st.info("Low risk detected. Review activities and update firewall rules.")
+    elif risk_score <= 50:
+        st.warning("Moderate risk. Patch vulnerabilities and monitor actively.")
+    else:
+        st.error("High risk! Take immediate action to secure your network.")
+
 
     except Exception as e:
         st.error(f"Error reading or processing file: {e}")
