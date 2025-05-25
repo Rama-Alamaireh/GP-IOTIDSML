@@ -209,20 +209,20 @@ if uploaded_file is not None:
             attack_counts = pd.Series(attack_names).value_counts().reset_index()
             attack_counts.columns = ['Attack Type', 'Count']
 
-
+            import plotly.express as px
             fig_pie = px.pie(
                 attack_counts,
                 names='Attack Type',
                 values='Count',
                 title="🔍 Distribution of Detected Attack Types",
-                color_discrete_sequence=px.colors.sequential.Blues,  
+                color_discrete_sequence=px.colors.sequential.Blues,
                 hole=0.3
             )
 
             fig_pie.update_traces(
-                textinfo='percent+label',     
-                pull=[0.03]*len(attack_counts),  
-                marker=dict(line=dict(color='white', width=1))  
+                textinfo='percent+label',
+                pull=[0.03]*len(attack_counts),
+                marker=dict(line=dict(color='white', width=1))
             )
 
             fig_pie.update_layout(
@@ -232,9 +232,10 @@ if uploaded_file is not None:
                 title_font_size=18
             )
 
-            st.markdown("###  Attack Distribution")
+            st.markdown("### 📊 Attack Distribution")
             st.plotly_chart(fig_pie, use_container_width=True)
 
+            # -------- Risk Score Calculation -------- #
             st.markdown("---")
             st.subheader("⚠️ Risk Score & Security Recommendations")
 
@@ -253,41 +254,43 @@ if uploaded_file is not None:
             else:
                 st.error("High risk! Take immediate action to secure your network.")
 
+            # -------- Circular Progress Chart for Risk Score -------- #
+            import plotly.graph_objects as go
+            fig_circle = go.Figure(go.Indicator(
+                mode="gauge+number",
+                value=risk_score,
+                domain={'x': [0, 1], 'y': [0, 1]},
+                title={'text': "Network Risk Score", 'font': {'size': 20}},
+                gauge={
+                    'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
+                    'bar': {'color': "royalblue"},
+                    'bgcolor': "white",
+                    'borderwidth': 2,
+                    'bordercolor': "gray",
+                    'steps': [
+                        {'range': [0, 20], 'color': '#c6f0ff'},
+                        {'range': [20, 50], 'color': '#7ecbff'},
+                        {'range': [50, 100], 'color': '#4682b4'}
+                    ],
+                    'threshold': {
+                        'line': {'color': "red", 'width': 4},
+                        'thickness': 0.75,
+                        'value': risk_score
+                    }
+                }
+            ))
+
+            fig_circle.update_layout(
+                paper_bgcolor='rgba(0,0,0,0)',
+                font={'color': "black", 'family': "Arial"},
+                margin=dict(t=50, b=0, l=0, r=0)
+            )
+
+            st.markdown("### 🛡️ Visual Risk Indicator")
+            st.plotly_chart(fig_circle, use_container_width=True)
+
     except Exception as e:
         st.error(f"❌ Error reading or processing file: {e}")
-# -------- Circular Progress Chart for Risk Score -------- #
-fig_circle = go.Figure(go.Indicator(
-    mode="gauge+number",
-    value=risk_score,
-    domain={'x': [0, 1], 'y': [0, 1]},
-    title={'text': "Network Risk Score", 'font': {'size': 20}},
-    gauge={
-        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkblue"},
-        'bar': {'color': "royalblue"},
-        'bgcolor': "white",
-        'borderwidth': 2,
-        'bordercolor': "gray",
-        'steps': [
-            {'range': [0, 20], 'color': '#c6f0ff'},
-            {'range': [20, 50], 'color': '#7ecbff'},
-            {'range': [50, 100], 'color': '#4682b4'}
-        ],
-        'threshold': {
-            'line': {'color': "red", 'width': 4},
-            'thickness': 0.75,
-            'value': risk_score
-        }
-    }
-))
-
-fig_circle.update_layout(
-    paper_bgcolor='rgba(0,0,0,0)',
-    font={'color': "black", 'family': "Arial"},
-    margin=dict(t=50, b=0, l=0, r=0)
-)
-
-st.markdown("### 🛡️ Visual Risk Indicator")
-st.plotly_chart(fig_circle, use_container_width=True)
 # -------------------- Upload Dataset with Label (For Accuracy Calculation) -------------------- #
 st.markdown("---")
 st.subheader("📂 Upload Dataset with Labels (for accuracy check)")
