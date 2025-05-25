@@ -169,7 +169,7 @@ attack_recommendations = {
 }
 
 # -------------------- Upload Dataset without Label (For Prediction) -------------------- #
-دst.subheader("📂 Upload Dataset (features only, no label)")
+st.subheader("📂 Upload Dataset (features only, no label)")
 uploaded_file = st.file_uploader("Upload CSV File", type=["csv"], key="no_label")
 
 if uploaded_file is not None:
