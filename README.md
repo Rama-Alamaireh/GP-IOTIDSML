@@ -6,10 +6,10 @@ Among the evaluated models, XGBoost achieved the highest performance, making it 
 
 ## Technologies Used
 - Python
-- Streamlit (for interactive web app)
-- XGBoost (final ML model)
 - Pandas (data handling)
 - Scikit-learn (model evaluation and preprocessing)
+- XGBoost (final ML model)
+- Streamlit (for interactive web app)
 
 
 ## How to Run the App
